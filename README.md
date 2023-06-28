@@ -1,4 +1,4 @@
-# Part 1: Task Management Application
+# Part 1: Task Management Application 😶‍🌫️
 
 First project in front-end HTML, CSS, ReactJS 🫠
 
