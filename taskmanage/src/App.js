@@ -126,9 +126,9 @@ function App() {
     setTodos(indo);
     setInprog(prog);
     setAchieved(achi);
-    setSearchTodos(todos); //??
-    setSearchInprog(inprog);
-    setSearchAchieved(achieved);
+    setSearchTodos(indo); //??
+    setSearchInprog(prog);
+    setSearchAchieved(achi);
     saveLocal();
   };
   //Save
