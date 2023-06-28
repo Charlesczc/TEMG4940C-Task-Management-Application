@@ -37,3 +37,20 @@ First project in front-end HTML, CSS, ReactJS 😶‍🌫️🫠
 
 - Cards are saved locally.
 - ⚠️The data is saved in browser local storage, make sure stick with one browser to ensure the consistency. ⚠️
+
+
+
+## Appendix
+
+The HTML file is in ./taskmanage/public.
+
+In the ./taskmanage/src:  
+- The root would be the index.js.
+
+- The App.js is where the code of the main interface at. With a general css file App.css.
+
+- Code for the 3 lists is in the List.js.
+
+- Code for the cards is in the Listitem.js.
+
+- Code for the edit screen when double clicking the card is in Popup.js. With a seperate css file Popup.css.
