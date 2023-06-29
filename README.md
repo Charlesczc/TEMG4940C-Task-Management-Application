@@ -21,12 +21,14 @@ First project in front-end HTML, CSS, ReactJS 😶‍🌫️🫠
 #### As a user, I want to be able to move cards between lists to indicate changes in their status or priority. ✅
 
 - Simply drag the card across the lists.
-- ⚠️ No changes would be saved if in search. ⚠️
+- ⚠️ NO changes would be saved if in search. ⚠️
+- ⚠️ Make sure empty the search bar before drag. ⚠️
 
 #### As a user, I want to be able to drag and drop cards within a list to reorder them. ✅
 
 - Simply drag the card within the list.
-- ⚠️ No changes would be saved if in search. ⚠️
+- ⚠️ NO changes would be saved if in search. ⚠️
+- ⚠️ Make sure empty the search bar before drag. ⚠️
 
 #### As a user, I want to be able to search for cards based on keywords in their title or description. ✅
 
@@ -36,8 +38,9 @@ First project in front-end HTML, CSS, ReactJS 😶‍🌫️🫠
 #### As a user, I want my data to persist locally, even after refreshing the page. ✅
 
 - Cards are saved locally.
-- ⚠️The data is saved in browser local storage, make sure stick with one browser to ensure the consistency. ⚠️
-
+- ⚠️ The data is saved in browser local storage, make sure stick with one browser to ensure the consistency. ⚠️
+- ⚠️ DO NOT use incognito browser. ⚠️
+- ⚠️ Cleaning browser storage would remove cards stored. ⚠️
 
 
 ## Appendix
