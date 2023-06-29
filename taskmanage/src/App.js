@@ -43,7 +43,7 @@ function App() {
     setSearch("");
   };
   const searchHandler = (e) => {
-    console.log(e.target.value);
+    //console.log(e.target.value);
     setSearch(e.target.value);
     setSearchTodos(
       todos.filter(
