@@ -1,11 +1,12 @@
-# Part 1: Task Management Application 
+<<<<<<< HEAD
+
+# Part 1: Task Management Application
 
 First project in front-end HTML, CSS, ReactJS 😶‍🌫️🫠
 
-
 ## >Tasks
 
-#### As a user, I want to be able to view three tasks in three separate lists: “To Do”,    “In progress” and “Archived”. ✅
+#### As a user, I want to be able to view three tasks in three separate lists: “To Do”, “In progress” and “Archived”. ✅
 
 - 3 columns 3 lists.
 
@@ -42,12 +43,12 @@ First project in front-end HTML, CSS, ReactJS 😶‍🌫️🫠
 - ⚠️ DO NOT use incognito browser. ⚠️
 - ⚠️ Cleaning browser storage would remove cards stored. ⚠️
 
-
 ## Appendix
 
 The HTML file is in ./taskmanage/public.
 
-In the ./taskmanage/src:  
+In the ./taskmanage/src:
+
 - The root would be the index.js.
 
 - The App.js is where the code of the main interface at. With a general css file App.css.
