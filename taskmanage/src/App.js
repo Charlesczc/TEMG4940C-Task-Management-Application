@@ -87,13 +87,15 @@ function App() {
   }, [todos, inprog, achieved, popup]);
 
   const onDragEnd = (DropResult) => {
-    //console.log(DropResult);
-    if (
-      todos.length !== searchTodos.length ||
-      inprog.length !== searchInprog.length ||
-      achieved.length !== searchAchieved.length
-    )
-      return;
+    console.log(DropResult);
+    // if (
+    //   todos.length !== searchTodos.length ||
+    //   inprog.length !== searchInprog.length ||
+    //   achieved.length !== searchAchieved.length
+    // ) {
+    //   window.alert("Please empty the search bar before reordering.");
+    //   return;
+    // }
     //console.log("dragged");
     const { source, destination } = DropResult;
     if (
@@ -126,7 +128,7 @@ function App() {
     setTodos(indo);
     setInprog(prog);
     setAchieved(achi);
-    setSearchTodos(indo); //??
+    setSearchTodos(indo);
     setSearchInprog(prog);
     setSearchAchieved(achi);
     saveLocal();

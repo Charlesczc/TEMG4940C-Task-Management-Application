@@ -49,4 +49,5 @@
   height: 280px;
   width: 100%;
   font-size: 1rem;
+  resize: none;
 }
