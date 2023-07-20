@@ -12,6 +12,7 @@ const Listitem = ({
   index,
 }) => {
   const clickHandler = (e) => {
+    //pop up window for editing task and detail after double click on target card
     if (e.detail === 2) {
       setPopup(true);
       setCurrent(item);

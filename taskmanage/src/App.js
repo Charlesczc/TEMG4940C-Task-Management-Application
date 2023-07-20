@@ -7,26 +7,28 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 function App() {
   //state
-  const [todos, setTodos] = useState([]);
-  const [inprog, setInprog] = useState([]);
-  const [achieved, setAchieved] = useState([]);
-  const [popup, setPopup] = useState(false);
+  const [todos, setTodos] = useState([]); //todo list content
+  const [inprog, setInprog] = useState([]); //Inprogress list content
+  const [achieved, setAchieved] = useState([]); //Achieved lsit contant
+  const [popup, setPopup] = useState(false); //Pop up window state {true : Pop / fales : close}
   const [current, setCurrent] = useState();
   const [defaultValue, setDefaultValue] = useState("");
   const [defaultDes, setDefaultDes] = useState("");
 
-  const [search, setSearch] = useState("");
-  const [searchTodos, setSearchTodos] = useState([]);
-  const [searchInprog, setSearchInprog] = useState([]);
-  const [searchAchieved, setSearchAchieved] = useState([]);
+  const [search, setSearch] = useState(""); //Search bar input content
+  const [searchTodos, setSearchTodos] = useState([]); //Displaying todo lsit contant
+  const [searchInprog, setSearchInprog] = useState([]); //Displaying inprog lsit contant
+  const [searchAchieved, setSearchAchieved] = useState([]); //Displaying achieved lsit contant
 
   //js code & function
   const newTodoHandler = (e) => {
+    //Create new todo card
     e.preventDefault();
     setTodos([...todos, { text: "", descript: "", id: Math.random() * 1000 }]);
     setSearch("");
   };
   const newInprogHandler = (e) => {
+    //create new inprogress card
     e.preventDefault();
     setInprog([
       ...inprog,
@@ -35,6 +37,7 @@ function App() {
     setSearch("");
   };
   const newAchievedHandler = (e) => {
+    //create new achieved card
     e.preventDefault();
     setAchieved([
       ...achieved,
@@ -43,6 +46,7 @@ function App() {
     setSearch("");
   };
   const searchHandler = (e) => {
+    //filter to show searching cards
     //console.log(e.target.value);
     setSearch(e.target.value);
     setSearchTodos(
@@ -74,6 +78,7 @@ function App() {
     );
   };
   useEffect(() => {
+    //When the actual lists change, displaying list change
     setSearchTodos(todos);
     setSearchInprog(inprog);
     setSearchAchieved(achieved);
@@ -133,13 +138,14 @@ function App() {
     setSearchAchieved(achi);
     saveLocal();
   };
-  //Save
+  //Saving actual lists content (browser)
   const saveLocal = () => {
     localStorage.setItem("todos", JSON.stringify(todos));
     localStorage.setItem("inprog", JSON.stringify(inprog));
     localStorage.setItem("achieved", JSON.stringify(achieved));
   };
   const getLocal = () => {
+    //load content from storage and set actual lists and display lists
     if (localStorage.getItem("todos") === null) {
       localStorage.setItem("todos", JSON.stringify([]));
     } else {
@@ -155,7 +161,7 @@ function App() {
     } else {
       setAchieved(JSON.parse(localStorage.getItem("achieved")));
     }
-  }; //
+  };
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -175,7 +181,7 @@ function App() {
           </div>
           <div className="container">
             <div>
-              <h2>ToDo</h2>
+              <h2>ToDo</h2> {/*Todo list*/}
               <Lists
                 items={searchTodos}
                 setItems={setTodos}
@@ -187,11 +193,12 @@ function App() {
                 uid="ToDo"
               />
               <span onClick={newTodoHandler} className="new-btn">
-                +
+                {" "}
+                {/*New card button*/}+
               </span>
             </div>
             <div>
-              <h2>InProgress</h2>
+              <h2>InProgress</h2> {/*Inprogress list*/}
               <Lists
                 items={searchInprog}
                 setItemsTodos={setInprog}
@@ -203,11 +210,12 @@ function App() {
                 uid="InProg"
               />
               <span onClick={newInprogHandler} className="new-btn">
-                +
+                {" "}
+                {/*New card button*/}+
               </span>
             </div>
             <div>
-              <h2>Achieved</h2>
+              <h2>Achieved</h2> {/*Achieved list*/}
               <Lists
                 items={searchAchieved}
                 setItems={setAchieved}
@@ -219,7 +227,8 @@ function App() {
                 uid="Acheived"
               />
               <span onClick={newAchievedHandler} className="new-btn">
-                +
+                {" "}
+                {/*New card button*/}+
               </span>
             </div>
           </div>
@@ -233,6 +242,8 @@ function App() {
             setDefaultDes={setDefaultDes}
           />
           <Droppable droppableId={"discard"}>
+            {" "}
+            {/*Bin for removing cards*/}
             {(provided) => (
               <div
                 className="bin"

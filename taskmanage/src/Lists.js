@@ -23,6 +23,7 @@ const Lists = ({
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
+            {/*//list of cards in corresponding list*/}
             {items.map((item, index) => (
               <Listitem
                 setPopup={setPopup}
