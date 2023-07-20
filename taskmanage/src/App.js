@@ -11,7 +11,7 @@ function App() {
   const [inprog, setInprog] = useState([]); //Inprogress list content
   const [achieved, setAchieved] = useState([]); //Achieved lsit contant
   const [popup, setPopup] = useState(false); //Pop up window state {true : Pop / fales : close}
-  const [current, setCurrent] = useState();
+  const [current, setCurrent] = useState(); //Facilitate search
   const [defaultValue, setDefaultValue] = useState("");
   const [defaultDes, setDefaultDes] = useState("");
 
@@ -21,14 +21,14 @@ function App() {
   const [searchAchieved, setSearchAchieved] = useState([]); //Displaying achieved lsit contant
 
   //js code & function
+  //Create new todo card
   const newTodoHandler = (e) => {
-    //Create new todo card
     e.preventDefault();
     setTodos([...todos, { text: "", descript: "", id: Math.random() * 1000 }]);
     setSearch("");
   };
+  //create new inprogress card
   const newInprogHandler = (e) => {
-    //create new inprogress card
     e.preventDefault();
     setInprog([
       ...inprog,
@@ -36,8 +36,8 @@ function App() {
     ]);
     setSearch("");
   };
+  //create new achieved card
   const newAchievedHandler = (e) => {
-    //create new achieved card
     e.preventDefault();
     setAchieved([
       ...achieved,
@@ -45,8 +45,8 @@ function App() {
     ]);
     setSearch("");
   };
+  //filter to show searching cards
   const searchHandler = (e) => {
-    //filter to show searching cards
     //console.log(e.target.value);
     setSearch(e.target.value);
     setSearchTodos(
@@ -77,8 +77,8 @@ function App() {
       )
     );
   };
+  //When the actual lists change, displaying list change
   useEffect(() => {
-    //When the actual lists change, displaying list change
     setSearchTodos(todos);
     setSearchInprog(inprog);
     setSearchAchieved(achieved);
@@ -91,16 +91,15 @@ function App() {
     saveLocal();
   }, [todos, inprog, achieved, popup]);
 
+  //handle drag and drop of cards
   const onDragEnd = (DropResult) => {
-    console.log(DropResult);
-    // if (
-    //   todos.length !== searchTodos.length ||
-    //   inprog.length !== searchInprog.length ||
-    //   achieved.length !== searchAchieved.length
-    // ) {
-    //   window.alert("Please empty the search bar before reordering.");
-    //   return;
-    // }
+    //console.log(DropResult);
+    if (
+      todos.length !== searchTodos.length ||
+      inprog.length !== searchInprog.length ||
+      achieved.length !== searchAchieved.length
+    )
+      return;
     //console.log("dragged");
     const { source, destination } = DropResult;
     if (
@@ -144,8 +143,8 @@ function App() {
     localStorage.setItem("inprog", JSON.stringify(inprog));
     localStorage.setItem("achieved", JSON.stringify(achieved));
   };
+  //load content from storage and set actual lists and display lists
   const getLocal = () => {
-    //load content from storage and set actual lists and display lists
     if (localStorage.getItem("todos") === null) {
       localStorage.setItem("todos", JSON.stringify([]));
     } else {
@@ -161,7 +160,7 @@ function App() {
     } else {
       setAchieved(JSON.parse(localStorage.getItem("achieved")));
     }
-  };
+  }; //
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -181,7 +180,8 @@ function App() {
           </div>
           <div className="container">
             <div>
-              <h2>ToDo</h2> {/*Todo list*/}
+              <h2>ToDo</h2>
+              {/* todo list */}
               <Lists
                 items={searchTodos}
                 setItems={setTodos}
@@ -192,13 +192,14 @@ function App() {
                 setDefaultDes={setDefaultDes}
                 uid="ToDo"
               />
+              {/* new card button */}
               <span onClick={newTodoHandler} className="new-btn">
-                {" "}
-                {/*New card button*/}+
+                +
               </span>
             </div>
             <div>
-              <h2>InProgress</h2> {/*Inprogress list*/}
+              <h2>InProgress</h2>
+              {/* in progress list */}
               <Lists
                 items={searchInprog}
                 setItemsTodos={setInprog}
@@ -209,13 +210,14 @@ function App() {
                 setDefaultDes={setDefaultDes}
                 uid="InProg"
               />
+              {/* new card button */}
               <span onClick={newInprogHandler} className="new-btn">
-                {" "}
-                {/*New card button*/}+
+                +
               </span>
             </div>
             <div>
-              <h2>Achieved</h2> {/*Achieved list*/}
+              <h2>Achieved</h2>
+              {/* achieved list */}
               <Lists
                 items={searchAchieved}
                 setItems={setAchieved}
@@ -226,9 +228,9 @@ function App() {
                 setDefaultDes={setDefaultDes}
                 uid="Acheived"
               />
+              {/* new card button */}
               <span onClick={newAchievedHandler} className="new-btn">
-                {" "}
-                {/*New card button*/}+
+                +
               </span>
             </div>
           </div>
@@ -241,9 +243,8 @@ function App() {
             defaultDes={defaultDes}
             setDefaultDes={setDefaultDes}
           />
+          {/* bin for removing cards */}
           <Droppable droppableId={"discard"}>
-            {" "}
-            {/*Bin for removing cards*/}
             {(provided) => (
               <div
                 className="bin"

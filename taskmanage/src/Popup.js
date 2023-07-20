@@ -20,19 +20,22 @@ function Popup(props) {
   return props.trigger ? (
     <div className="popup">
       <div className="popup-inner">
+        {/*button for closing pop up edit window */}
         <button className="close-btn" onClick={closeHandler}>
           x
         </button>
         {/* {props.children} */}
         <ul>
-          <input //input field for task title
+          {/*input field for task title*/}
+          <input
             className="task"
             placeholder="Enter your task here"
             onChange={inputTaskHandler}
             value={props.defaultValue}
             type="text"
           ></input>
-          <textarea //input field for task detail
+          {/*input field for task detail*/}
+          <textarea
             className="description"
             placeholder="Enter task description here"
             onChange={inputDesHandler}

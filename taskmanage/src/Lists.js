@@ -23,13 +23,13 @@ const Lists = ({
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            {/*//list of cards in corresponding list*/}
+            {/*list of cards in corresponding list*/}
             {items.map((item, index) => (
               <Listitem
                 setPopup={setPopup}
                 text={item.text}
                 popup={popup}
-                item={item} //
+                item={item}
                 setCurrent={setCurrent}
                 setDefaultValue={setDefaultValue}
                 setDefaultDes={setDefaultDes}
